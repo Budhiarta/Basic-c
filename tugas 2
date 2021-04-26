@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+
+void main(){
+    char name[50],kls[5],almat[50];
+    int nim;
+    int Telp;
+    int bln_lhr, tgl_lhr, thn_lhr;
+    int bln_skrg, tgl_skrg, thn_skrg;
+    int bln=0, tgl, thn;
+    int jml_thnAkhir=0,jml_blnAkhir;
+    int bln1=0,bln2,jml_bln=0,jml_bln2=0;
+    int jml_hri1=0, jml_hri2=0, jml_hari;
+
+    //tanggal lahir
+    printf("==========================================\n");
+    printf("\t      Selamat Datang!\t\n");
+    printf("     'Program Data Diri Mahasiswa'\t\n\n");
+    printf("==========================================\n");
+    printf("== Silahkan Input Data Sesuai Diri Anda ==\n\n");
+    printf("  Nama : ");
+    scanf("%[^\n]s",name);
+    printf("\n  Kelas : ");
+    scanf("%s",&kls);
+    printf("\n  NIM  : ");
+    scanf("%d",&nim);
+    printf("\n Alamat  :");
+    fflush(stdin);
+    scanf("%[^\n]s",almat);
+    printf("\n No. Telp : ");
+    scanf("%d",&Telp);
+
+        do{
+            printf("\nMasukkan tahun lahir Anda   : ");scanf("%d",&thn_lhr);
+            if(thn_lhr<0)printf("Maaf Tahun yang Anda Masukkan Kurang Sesuai");
+        }while(thn_lhr<0);
+        do{
+            printf("Masukkan bulan lahir Anda   : ");scanf("%d",&bln1);
+            if(bln1>12||bln1<=0) printf("Maaf Bulan yang Anda Masukkan Kurang Sesuai\n");
+        }while(bln1>12||bln1<=0);
+        do{
+            printf("Masukkan tanggal lahir Anda : ");scanf("%d",&tgl_lhr);
+            if(tgl_lhr>31||tgl_lhr<=0) printf("Maaf Tanggal yang Anda Masukkan kurang Sesuai\n");
+        }while(tgl_lhr>31||tgl_lhr<=0);
+            puts("\n\n=====================\n"
+            " Waktu Sekarang \n"
+            "=====================");
+        do{
+            printf("Masukkan tahun sekarang     : ");scanf("%d",&thn_skrg);
+            if(thn_skrg<0||thn_skrg<thn_lhr)printf("Maaf Tahun yang Anda Masukkan Kurang Sesuai\n");
+        }while(thn_skrg<0||thn_skrg<thn_lhr);
+        do{
+            printf("Masukkan bulan sekarang     : ");scanf("%d",&bln2);
+            if(bln2>12||bln2<=0) printf("Maaf Bulan yang Anda Masukkan Kurang Sesuai\n");
+        }while(bln2>12||bln2<=0);
+        do{
+            printf("Masukkan tanggal sekarang   : ");scanf("%d",&tgl_skrg);
+            if(tgl_skrg>31||tgl_skrg<=0) printf("Maaf Tanggal yang Anda Masukkan kurang Sesuai\n");
+        }while(tgl_skrg>31||tgl_skrg<=0);
+
+        for(thn=thn_lhr+1;thn<thn_skrg;thn+=1){ // mencari jumlah tahun sesudah tahun lahir dan sebelum tahun sekarang
+            jml_thnAkhir=jml_thnAkhir+1;
+        }
+ 
+        for(bln1=bln_lhr+1;bln1<=12;bln1+=1){ // mencari jumlah bulan sesudah bulan lahir pada tahun lahir
+            jml_bln=jml_bln+1;
+        }
+ 
+        for(bln2=bln_skrg-1;bln2>=1;bln2-=1){ // mencari jumlah bulan sebelum bulan sekarang pada tahun sekarang
+            jml_bln2=jml_bln2+1;
+        }
+
+        jml_hri1=30-(tgl_lhr-1); // mencari jumlah hari pada bulan lahir
+ 
+        jml_hri2=tgl_skrg; // mencari jumlah hari pada bulan sekarang
+ 
+        jml_hari=jml_hri1+jml_hri2; // mencari jumlah hari pada bulan lahir dan bulan sekarang
+        if(jml_hari>=30){
+            bln=bln+1;
+            jml_hari=jml_hari-30;
+        }
+        bln=bln+jml_bln+jml_bln2;  // mencari jumlah total bulan
+        if(bln>=12){
+            jml_thnAkhir=jml_thnAkhir+1;
+            bln=bln-12;
+        }
+
+        system("cls");
+        fflush(stdin);
+        printf("\n---Pendaftaran Berhasil!----");
+        printf("\nNama  : %s", name);
+        printf("\nKelas : %s", kls);
+        printf("\nNIM   : %d", nim);
+        printf("\nAlamat: %s", almat);
+        printf("\nNo. Telp : %d", Telp);
+        printf("\nUmur Anda %d tahun %d bulan %d hari\n\n",jml_thnAkhir,bln,jml_hari);
+ 
+        printf("\n");
+        fflush(stdin);
+        getchar();
+        system("cls");
+        //
+        printf("\n\n --Terimakasih--\n\n");
+        fflush(stdin);
+        getchar();
+        system("cls");
+        system("pause");
+}
