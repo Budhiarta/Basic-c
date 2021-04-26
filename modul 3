@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void main()
+{
+   
+    int baris1, baris2, kolom1, kolom2, i, j;
+    char ulangi;
+    
+    do{
+    printf("\n\t+====================================+\n");
+    printf("\t|     program perkalian matriks      | \n");
+    printf("\t|     by: I Nyoman Budhiarta Suputra |\n");
+    printf("\t|             2008561110             |\n");
+    printf("\t+====================================+\n\n");
+    printf("masukkan jumlah baris matriks 1\t: ");
+    scanf("%d", &baris1);
+    printf("masukkan jumlah kolom matriks 1 dan baris matriks 2\t: ");
+    scanf("%d", &kolom1);
+    baris2 = kolom1;
+    printf("masukkan jumlah kolom matriks 2\t:");
+    scanf("%d", &kolom2);
+
+    int m1[baris1][kolom1], m2[baris2][kolom2];
+
+//input nilai matriks1
+    printf("\nInput nilai matriks 1 :\n");
+        for (i = 0; i < baris1; i++){
+            for (j = 0; j < kolom1; j++){
+                printf("Input Matriks 1[%d][%d]: ",i+1,j+1);
+                scanf("%d", &m1[i][j]);
+            }
+        }        
+/*menampilkan matriks 1*/
+    printf("\nMatriks 1:\n");
+        for (i=0; i< baris1; i++){
+            for (j=0; j<kolom1; j++){
+                printf("%3d", m1[i][j]);
+            }
+                printf("\n");
+        }
+
+//input nilai matriks2
+    printf("\nInput nilai matriks 2:\n");
+        for (i = 0; i < baris2; i++){
+            for (j = 0 ; j < kolom2; j++){
+                printf("Input Matriks 2[%d][%d]: ",i+1,j+1);
+                scanf("%d",&m2[i][j]);
+            }
+        }
+
+/*menampilkan matriks */
+    printf("\nMatrik 2 : \n");
+        for (i=0; i< baris2; i++){
+            for (j=0; j<kolom2; j++){
+                printf("%3d", m2[i][j]);
+            }
+                printf("\n");
+        }
+
+
+int kali[100][100];
+
+    printf("\nhasil kali dari kedua matriks tersebut adalah:");
+        for(i = 0;i < baris1; i++)
+        {
+            for(j = 0;j < kolom2;j++)
+                {
+                    for(int k=0;k < kolom1;k++){
+                    kali[i][j] += m1[i][k] * m2[k][j];
+                    }
+                }
+                    printf("\n");
+        }
+        for(i = 0;i < baris1; i++)
+        {
+            for(j = 0;j < kolom2; j++)
+            {
+            printf("%d\t", kali[i][j]);
+            if(j==kolom2-1){
+            printf("\n");}
+            }
+        }
+        printf("\n\tTERIMA KASIH SUDAH MENCOBA !!\n");
+        printf("\tapakah anda ingin mengulanginya (y/t): ");
+        fflush(stdin);
+        scanf("%s", &ulangi);
+    }while (ulangi == 'y');
+}
