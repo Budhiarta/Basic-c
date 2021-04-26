@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int a, b, c, i, n;
+char ulangi;
+
+void main()
+{
+    do{
+    printf("\n\t\t| BILANGAN FIBONACI |\n\n");
+    printf("\t Nama\t: I Nyoman Budhiarta Suputra\n");
+    printf("\t NIM\t: 2008561110\n");
+    printf("\tKelas\t: E\n\n");
+    printf("masukkan deret bilangan fibonaci : ");
+    scanf("%d", &n);
+
+    a = 0;
+    b = 1;
+
+    for(i=0; i<n; i++)
+    {
+        if (i == 0)
+        {
+            c=a;
+            printf(" %d ", c);
+        }else if (i== 1)
+            {
+                c=b;
+                printf(" %d ", c);
+            }else if (i > 1)
+                {
+                    c = a + b;
+                    a=b;
+                    b=c;
+                    printf(" %d ", c);
+                }
+    }
